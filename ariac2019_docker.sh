@@ -23,9 +23,6 @@ then
     chmod a+r $XAUTH
 fi
 
-# X forwarding
-xhost +
-
 # docker run
 CONTAINER_ID=$(docker run -it --detach \
   -v "/dev/dri:/dev/dri" \
@@ -46,6 +43,10 @@ CONTAINER_ID=$(docker run -it --detach \
   --security-opt seccomp=unconfined \
   --name $DOCKER_CONATINER_NAME \
   $DOCKER_IMG)
+
+# X forwarding
+host=$(docker inspect --format='{{ .Config.Hostname }}' $DOCKER_CONATINER_NAME)
+xhost +local:$host
 
 # check if the docker is running
 if [ "$(docker inspect -f {{.State.Running}} $CONTAINER_ID)" = "true" ]; then
