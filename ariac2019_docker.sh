@@ -1,6 +1,7 @@
 #!/bin/bash
 
 DOCKER_IMG="ariac2019_docker"
+DOCKER_CONATINER_NAME="ariac2019_docker_container"
 HOME_DIRECTORY="/home/$USER/ariac2019_home"
 
 docker_start() {
@@ -43,7 +44,7 @@ CONTAINER_ID=$(docker run -it --detach \
   --rm \
   --runtime=nvidia \
   --security-opt seccomp=unconfined \
-  --name ariac2019_docker_cont \
+  --name $DOCKER_CONATINER_NAME \
   $DOCKER_IMG)
 
 # check if the docker is running
@@ -61,11 +62,11 @@ fi
 
 docker_enter() {
 # docker exec
-docker exec -ti -u $(id -u) $DOCKER_IMG bash -li
+docker exec -ti -u $(id -u) $DOCKER_CONATINER_NAME bash -li
 }
 
 docker_stop() {
- docker stop -t 0 $DOCKER_IMG
+ docker stop -t 0 $DOCKER_CONATINER_NAME
 }
 
 if [ "$1" = "start" ]; then 
