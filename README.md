@@ -1,6 +1,15 @@
 # ariac2019-docker
-Has the docker containerisation for [ARIAC2019](https://www.nist.gov/el/intelligent-systems-division-73500/agile-robotics-industrial-automation-competition) 
+This repo has the docker containerization for [ARIAC2019](https://www.nist.gov/el/intelligent-systems-division-73500/agile-robotics-industrial-automation-competition)
 
+The docker image is available at https://hub.docker.com/r/sumanthnirmal/ros-melodic-gazebo9
+
+### [sumanthnirmal/ros-melodic-gazebo9
+ ![Docker Pulls](https://img.shields.io/docker/pulls/sumanthnirmal/ros-melodic-gazebo9.svg?style=popout)](https://hub.docker.com/r/sumanthnirmal/ros-melodic-gazebo9)
+[!Automated](https://img.shields.io/docker/automated/sumanthnirmal/ros-melodic-gazebo9.svg?style=popout_](https://hub.docker.com/r/sumanthnirmal/ros-melodic-gazebo9)
+[![Docker Stars](https://img.shields.io/docker/stars/sumanthnirmal/ros-melodic-gazebo9.svg?style=popout)](https://hub.docker.com/r/sumanthnirmal/ros-melodic-gazebo9)
+[![Compare Images](https://images.microbadger.com/badges/image/library/ros.svg)](https://microbadger.com/#/images/library/ros)
+[![Compare Images](https://images.microbadger.com/badges/image/sumanthnirmal/ros-melodic-gazebo9:ariac2019.svg)](https://microbadger.com/images/sumanthnirmal/ros-melodic-gazebo9:ariac2019)
+[![Version](https://images.microbadger.com/badges/version/sumanthnirmal/ros-melodic-gazebo9:ariac2019.svg)](https://microbadger.com/images/sumanthnirmal/ros-melodic-gazebo9:ariac2019)
 
 ## Requirements
 
@@ -8,7 +17,7 @@ Has the docker containerisation for [ARIAC2019](https://www.nist.gov/el/intellig
   - [docker](https://www.docker.com/), can be installed from here https://docs.docker.com/install/linux/docker-ce/ubuntu/
   - `nvidia-docker2`, can be installed from here https://github.com/NVIDIA/nvidia-docker#quickstart
 
-     #### `nvidia-docker2` can be installed on Ubuntu 14.04/16.04/18.04 
+     #### `nvidia-docker2` can be installed on Ubuntu 14.04/16.04/18.04
     ```sh
     # If you have nvidia-docker 1.0 installed: we need to remove it and all existing GPU containers
     docker volume ls -q -f driver=nvidia-docker | xargs -r -I{} -n1 docker ps -q -a -f volume={} | xargs -r docker rm -f
@@ -29,7 +38,7 @@ Has the docker containerisation for [ARIAC2019](https://www.nist.gov/el/intellig
     # Test nvidia-smi with the latest official CUDA image
     docker run --runtime=nvidia --rm nvidia/cuda:9.0-base nvidia-smi
     ```
-- This also requires a directory named `ariac2019_home` in the `/home` directory on host machine, which will be mounted as `/home` directory inside the docker container. This directory holds all the code and files which can be accessed inside the container.
+- This also requires a directory named `ariac2019_home` in the `/home` directory on host machine, which will be mounted as `/home` directory inside the docker container. This directory can be accessed inside the container.
 
 ## Quick-start
 
@@ -56,20 +65,20 @@ The bash script `ariac2019-docker.sh` handles the start, stop of the docker
 #### Usage:
 
 ##### Start
-To start the `ariac2019_docker` container 
+To start the `ariac2019_docker` container
 
 ```sh
 $ bash ariac2019-docker.sh start
 ```
-This should automatically pull the image from [dockerhub](https://hub.docker.com/) (to locally build the image, check the next section below) and should start the `ariac2019_docker` container with `ariac2019_docker_container` name and user `developer`. The directory `/home/ariac2019_home` on the host machine will be mapped as `/home` inside the docker with correct X forwarding so any processes inside the container can connect to the x server.
+This should automatically pull the image from [dockerhub](https://hub.docker.com/r/sumanthnirmal/ros-melodic-gazebo9) (to locally build the image, check the next section below) and should start the container with `ariac2019_docker_container` name and user `developer`. The directory `/home/ariac2019_home` on the host machine will be mapped as `/home` inside the docker with correct X forwarding so any processes inside the container can connect to the x server.
 
-If the `ariac2019_docker` is already started, it can be restarted as below:
+If the `ariac2019_docker_container` is already started, it can be restarted as below:
 
 ```sh
 $ bash ariac2019-docker.sh start -f
 ```
 ##### Enter
-Once the `ariac2019_docker` is started, we can enter the `ariac2019_docker` environment as follows:
+Once the `ariac2019_docker_container` is started, we can enter the `ariac2019_docker_container` environment as follows:
 
 ```sh
 $ bash ariac2019-docker.sh enter
@@ -77,7 +86,7 @@ $ bash ariac2019-docker.sh enter
 This should automatically connect to the `ariac2019_docker_container` instance
 
 ##### Stop
-To stop the `ariac2019_docker` container 
+To stop the `ariac2019_docker_container` container
 
 ```sh
 $ bash ariac2019-docker.sh stop
@@ -86,7 +95,7 @@ This should automatically stop the docker
 
 ## Docker file
 
-The repository contains the Dockerfile which is based on `Ubuntu 18.04` with `nvidia-docker2` beta opengl support https://hub.docker.com/r/nvidia/opengl. The Dockerfile contians the following packages 
+The repository contains the Dockerfile which is based on `Ubuntu 18.04` with `nvidia-docker2` beta opengl support https://hub.docker.com/r/nvidia/opengl. The Dockerfile contians the following packages
 
 - [ros-melodic-desktop-full](http://wiki.ros.org/melodic)
 - [gazebo9](http://gazebosim.org/)
@@ -99,7 +108,6 @@ Also has some utilities like `git`, `git-gui`, `vim`, `htop`, `terminator`, `ato
 The docker image can be built locally as below:
 
 ```sh
-$
+$ cd ariac2019-docker
+~/ariac2019-docker$ docker build --tag=ariac2019_docker .
 ```
-
-
