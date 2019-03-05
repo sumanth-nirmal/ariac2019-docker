@@ -9,8 +9,6 @@ This repo has the docker containerization for [ARIAC2019](https://www.nist.gov/e
 
 [![Docker Stars](https://img.shields.io/docker/stars/sumanthnirmal/ros-melodic-gazebo9.svg?style=popout)](https://hub.docker.com/r/sumanthnirmal/ros-melodic-gazebo9)
 
-[![Compare Images](https://images.microbadger.com/badges/image/library/ros.svg)](https://microbadger.com/#/images/library/ros)
-
 [![Compare Images](https://images.microbadger.com/badges/image/sumanthnirmal/ros-melodic-gazebo9:ariac2019.svg)](https://microbadger.com/images/sumanthnirmal/ros-melodic-gazebo9:ariac2019)
 
 [![Version](https://images.microbadger.com/badges/version/sumanthnirmal/ros-melodic-gazebo9:ariac2019.svg)](https://microbadger.com/images/sumanthnirmal/ros-melodic-gazebo9:ariac2019)
