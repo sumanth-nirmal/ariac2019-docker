@@ -113,3 +113,9 @@ The docker image can be built locally as below:
 $ cd ariac2019-docker
 ~/ariac2019-docker$ docker build --tag=ariac2019_docker .
 ```
+
+### References:
+
+- https://bitbucket.org/sloretz/dev_docker/src
+- https://github.com/NVIDIA/nvidia-docker
+- https://bitbucket.org/osrf/ariac/wiki/2019/Home.md
