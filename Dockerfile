@@ -26,17 +26,14 @@ RUN export DEBIAN_FRONTEND=noninteractive \
  && apt-get clean
 
 # Setup ccache
-#ARG ccache_size=2000000k
-#RUN /usr/sbin/update-ccache-symlinks \
-# && touch /etc/ccache.conf \
-# && /bin/sh -c 'echo "cache_dir = /ccache\n" >> /etc/ccache.conf' \
-# && /bin/sh -c 'echo "max_size = ${ccache_size}" >> /etc/ccache.conf'
-
-#LABEL "sloretz.ccache.size"="${ccache_size}" "sloretz.ccache.location"="/ccache"
+ARG ccache_size=2000000k
+RUN /usr/sbin/update-ccache-symlinks \
+ && touch /etc/ccache.conf \
+ && /bin/sh -c 'echo "cache_dir = /ccache\n" >> /etc/ccache.conf' \
+ && /bin/sh -c 'echo "max_size = ${ccache_size}" >> /etc/ccache.conf'
 
 # Add a user with the same user_id as the user on the host
-ARG user_id
-ENV USERNAME ariac2019_developer
+ENV USERNAME developer
 RUN useradd -ms /bin/bash $USERNAME \
  && echo "$USERNAME:$USERNAME" | chpasswd \
  && adduser $USERNAME sudo \
@@ -46,13 +43,10 @@ RUN useradd -ms /bin/bash $USERNAME \
 USER $USERNAME
 
 # Add paths for ccache
-#RUN /bin/sh -c 'echo "export PATH=/usr/lib/ccache:\$PATH" >> ~/.bashrc'
-
-# Make a couple folders for organizing docker volumes
-#RUN mkdir ~/workspaces ~/other
+RUN /bin/sh -c 'echo "export PATH=/usr/lib/ccache:\$PATH" >> ~/.bashrc'
 
 # When running a container start in the developer's home folder
-#WORKDIR /home/$USERNAME
+WORKDIR /home/$USERNAME
 
 RUN sudo apt-get update \
  && sudo -E apt-get install -y \
@@ -79,12 +73,13 @@ RUN sudo /bin/sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release 
 RUN rosdep update
 
 # Install ariac3 (ariac2019)
-RUN sudo /bin/sh -c 'echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable bionic main" > /etc/apt/sources.list.d/gazebo-stable.list' \ 
- && sudo /bin/sh -c ' echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-prerelease bionic main" > /etc/apt/sources.list.d/gazebo-prerelease.list' \
+RUN sudo /bin/sh -c 'echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable bionic main" > /etc/apt/sources.list.d/gazebo-stable.list'
+RUN sudo /bin/sh -c 'echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-prerelease bionic main" > /etc/apt/sources.list.d/gazebo-prerelease.list' \
  && wget http://packages.osrfoundation.org/gazebo.key -O - | sudo apt-key add - \
  && sudo apt-get update \
  && sudo apt-get install -y \
     ariac3 \
 && sudo apt-get clean
 
-RUN /bin/sh -c 'echo ". /opt/ros/melodic/setup.bash" >> ~/.bashrc'
+RUN /bin/sh -c 'echo ". /opt/ros/melodic/setup.bash" >> ~/.bashrc' \
+ && /bin/sh -c 'echo ". /usr/share/gazebo/setup.sh" >> ~/.bashrc'
