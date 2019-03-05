@@ -7,7 +7,6 @@ HOME_DIRECTORY="/home/$USER/ariac2019_home"
 docker_start() {
   # if ariac2019_home directory presents
   if [ -d "$HOME_DIRECTORY" ]; then
-
     # Make sure processes in the container can connect to the x server
     # Necessary so gazebo can create a context for OpenGL rendering (even headless)
     XAUTH=/tmp/.docker.xauth
@@ -71,6 +70,21 @@ docker_stop() {
 }
 
 if [ "$1" = "start" ]; then
+  # if container is already Running
+  if docker ps --format '{{.Names}}' | grep -q $DOCKER_CONATINER_NAME; then
+    # if requested to restart
+    if [ "$2" = "-f" ]; then
+      # stop the container
+      docker_stop
+    else
+      echo "ERROR: $DOCKER_IMG is already running.
+      Use bash ariac2019_docker.sh enter to enter
+      or
+      Use bash ariac2019_docker.sh start -f to restart."
+      # exit from here
+      exit
+    fi
+  fi
   echo "Starting $DOCKER_IMG container"
   docker_start
 elif [ "$1" = "enter" ]
