@@ -1,14 +1,20 @@
 # ariac2019-docker
 This repo has the docker containerization for [ARIAC2019](https://www.nist.gov/el/intelligent-systems-division-73500/agile-robotics-industrial-automation-competition)
 
-The docker image is available at https://hub.docker.com/r/sumanthnirmal/ros-melodic-gazebo9
+The docker image is available at [sumanthnirmal/ros-melodic-gazebo9](https://hub.docker.com/r/sumanthnirmal/ros-melodic-gazebo9)
 
-### [sumanthnirmal/ros-melodic-gazebo9
- ![Docker Pulls](https://img.shields.io/docker/pulls/sumanthnirmal/ros-melodic-gazebo9.svg?style=popout)](https://hub.docker.com/r/sumanthnirmal/ros-melodic-gazebo9)
-[!Automated](https://img.shields.io/docker/automated/sumanthnirmal/ros-melodic-gazebo9.svg?style=popout_](https://hub.docker.com/r/sumanthnirmal/ros-melodic-gazebo9)
+### [sumanthnirmal/ros-melodic-gazebo9 
+
+[![Docker Pulls](https://img.shields.io/docker/pulls/sumanthnirmal/ros-melodic-gazebo9.svg?style=popout)](https://hub.docker.com/r/sumanthnirmal/ros-melodic-gazebo9)
+
+[![Automated](https://img.shields.io/docker/automated/sumanthnirmal/ros-melodic-gazebo9.svg?style=popout)](https://hub.docker.com/r/sumanthnirmal/ros-melodic-gazebo9)
+
 [![Docker Stars](https://img.shields.io/docker/stars/sumanthnirmal/ros-melodic-gazebo9.svg?style=popout)](https://hub.docker.com/r/sumanthnirmal/ros-melodic-gazebo9)
+
 [![Compare Images](https://images.microbadger.com/badges/image/library/ros.svg)](https://microbadger.com/#/images/library/ros)
+
 [![Compare Images](https://images.microbadger.com/badges/image/sumanthnirmal/ros-melodic-gazebo9:ariac2019.svg)](https://microbadger.com/images/sumanthnirmal/ros-melodic-gazebo9:ariac2019)
+
 [![Version](https://images.microbadger.com/badges/version/sumanthnirmal/ros-melodic-gazebo9:ariac2019.svg)](https://microbadger.com/images/sumanthnirmal/ros-melodic-gazebo9:ariac2019)
 
 ## Requirements
