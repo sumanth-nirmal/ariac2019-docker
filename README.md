@@ -49,6 +49,8 @@ $ roslaunch osrf_gear sample_environment.launch
 
 This should launch the sample environment as shown below:
 
+![ARIAC2019 Sample environment cell](img/ARIAC2019_sample_cell_environment.png)
+
 ## Docker file
 
 The repository contains the Dockerfile which is based on `Ubuntu 18.04` with `nvidia-docker2` beta opengl support https://hub.docker.com/r/nvidia/opengl. The Dockerfile contians the following packages 
