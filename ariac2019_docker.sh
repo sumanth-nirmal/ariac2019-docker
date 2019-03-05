@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DOCKER_IMG="ariac2019_docker"
+DOCKER_IMG="sumanthnirmal/ros-melodic-gazebo9:ariac2019"
 DOCKER_CONATINER_NAME="ariac2019_docker_container"
 HOME_DIRECTORY="/home/$USER/ariac2019_home"
 
