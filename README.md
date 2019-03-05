@@ -1,9 +1,7 @@
 # ariac2019-docker
 This repo has the docker containerization for [ARIAC2019](https://www.nist.gov/el/intelligent-systems-division-73500/agile-robotics-industrial-automation-competition)
 
-The docker image is available at [sumanthnirmal/ros-melodic-gazebo9](https://hub.docker.com/r/sumanthnirmal/ros-melodic-gazebo9)
-
-### [sumanthnirmal/ros-melodic-gazebo9 
+### [sumanthnirmal/ros-melodic-gazebo9](https://hub.docker.com/r/sumanthnirmal/ros-melodic-gazebo9)
 
 [![Docker Pulls](https://img.shields.io/docker/pulls/sumanthnirmal/ros-melodic-gazebo9.svg?style=popout)](https://hub.docker.com/r/sumanthnirmal/ros-melodic-gazebo9)
 
