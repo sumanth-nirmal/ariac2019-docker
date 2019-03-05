@@ -51,6 +51,39 @@ This should launch the sample environment as shown below:
 
 ![ARIAC2019 Sample environment cell](img/ARIAC2019_sample_cell_environment.png)
 
+## ariac2019-dcoker script
+The bash script `ariac2019-docker.sh` handles the start, stop of the docker
+#### Usage:
+
+##### Start
+To start the `ariac2019_docker` container 
+
+```sh
+$ bash ariac2019-docker.sh start
+```
+This should automatically pull the image from [dockerhub](https://hub.docker.com/) (to locally build the image, check the next section below) and should start the `ariac2019_docker` container with `ariac2019_docker_container` name and user `developer`. The directory `/home/ariac2019_home` on the host machine will be mapped as `/home` inside the docker with correct X forwarding so any processes inside the container can connect to the x server.
+
+If the `ariac2019_docker` is already started, it can be restarted as below:
+
+```sh
+$ bash ariac2019-docker.sh start -f
+```
+##### Enter
+Once the `ariac2019_docker` is started, we can enter the `ariac2019_docker` environment as follows:
+
+```sh
+$ bash ariac2019-docker.sh enter
+```
+This should automatically connect to the `ariac2019_docker_container` instance
+
+##### Stop
+To stop the `ariac2019_docker` container 
+
+```sh
+$ bash ariac2019-docker.sh stop
+```
+This should automatically stop the docker
+
 ## Docker file
 
 The repository contains the Dockerfile which is based on `Ubuntu 18.04` with `nvidia-docker2` beta opengl support https://hub.docker.com/r/nvidia/opengl. The Dockerfile contians the following packages 
@@ -61,10 +94,12 @@ The repository contains the Dockerfile which is based on `Ubuntu 18.04` with `nv
 
 Also has some utilities like `git`, `git-gui`, `vim`, `htop`, `terminator`, `atom` etc.
 
-### Build Docker image
+#### Build Docker image
 
 The docker image can be built locally as below:
 
 ```sh
 $
 ```
+
+
