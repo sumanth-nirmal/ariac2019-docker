@@ -102,8 +102,9 @@ The repository contains the Dockerfile which is based on `Ubuntu 18.04` with `nv
 - [ros-melodic-desktop-full](http://wiki.ros.org/melodic)
 - [gazebo9](http://gazebosim.org/)
 - ariac3
+- [VScode](https://code.visualstudio.com/) with som extensions for C/C++, python, docker, yaml, gitlens, ROS
 
-Also has some utilities like `git`, `git-gui`, `vim`, `htop`, `terminator`, `atom` etc.
+Also has some utilities like `git`, `git-gui`, `vim`, `htop`, `terminator` etc.
 
 #### Build Docker image
 

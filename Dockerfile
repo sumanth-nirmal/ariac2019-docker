@@ -1,6 +1,8 @@
 # Ubuntu 18.04 with nvidia-docker2 beta opengl support
 FROM nvidia/opengl:1.0-glvnd-devel-ubuntu18.04
 
+MAINTAINER Sumanth Nirmal "sumanth.724@gmail.com"
+
 # Some tools for development
 RUN export DEBIAN_FRONTEND=noninteractive \
  && apt-get update \
@@ -71,6 +73,27 @@ RUN sudo /bin/sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release 
  && sudo apt-get clean
 
 RUN rosdep update
+
+# install vscode dpendencies
+RUN sudo apt-get install -y \
+  libxkbfile1 \
+  libsecret-1-dev \
+  libnss3 \
+  libasound2
+# Install Visual Studio Code
+RUN wget -O vscode-amd64.deb https://go.microsoft.com/fwlink/?LinkID=760868 \
+  && sudo dpkg -i vscode-amd64.deb \
+  && rm vscode-amd64.deb
+# Install required vscode extensions
+RUN code \
+  --install-extension ms-vscode.cpptools  \
+  --install-extension ms-python.python  \
+  --install-extension eamodio.gitlens  \
+  --install-extension peterjausovec.vscode-docker donjayamanne.githistory  \
+  --install-extension redhat.vscode-yaml  \
+  --install-extension shd101wyy.markdown-preview-enhanced  \
+  --install-extension xaver.clang-format  \
+  --install-extension ajshort.ros
 
 # Install ariac3 (ariac2019)
 RUN sudo /bin/sh -c 'echo "deb http://packages.osrfoundation.org/gazebo/ubuntu-stable bionic main" > /etc/apt/sources.list.d/gazebo-stable.list'
